@@ -33,3 +33,5 @@ sarahl.cox.22@gmail.com
 Please email me using the email above
 
 ![Screen Shot 2020-10-15 at 10 05 00 PM (2)](https://user-images.githubusercontent.com/71027264/96208149-7e7f8580-0f32-11eb-9937-03fe75cd11cf.png)
+![Screen Shot 2020-10-15 at 10 05 03 PM (2)](https://user-images.githubusercontent.com/71027264/96208216-a242cb80-0f32-11eb-92ca-d8cd9ed3d68e.png)
+
