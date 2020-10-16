@@ -7,24 +7,6 @@ const inquirer = require("inquirer");
 // bring in markdown  module
 const markdown = require("../Develop/utils/generateMarkdown");
 
-// append these responses to questions section
-var userInfo = [
-    {
-        type: "input",
-        message: "What is your GitHub Username?",
-        name: "username"
-      },
-      {
-        type: "input",
-        message: "What is your email address?",
-        name: "email"
-      },
-      {
-        type: "input",
-        message: "Additional contact info/ways to be reached:",
-        name: "additionalinfo"
-      },
-]
 // // array of questions for user
 var questions = [
     {
@@ -47,7 +29,7 @@ var questions = [
         type: "list",
         name: "license",
         message: "Select license type:",
-        choices: ["copyleft","lpgl","MIT","permissive","proprietary","public"]
+        choices: ["MIT","Apache 2.0","GPLv3","Unlicense","LGPLv3"]
       },
       {
         type: "input",
@@ -61,11 +43,37 @@ var questions = [
       },
       {
         type: "input",
-        message: "Questions:",
-        name: "questions"
+        message: "What is your GitHub Username?",
+        name: "username"
       },
+    {
+      type: "input",
+      message: "What is your email address?",
+      name: "email"
+    },
+    {
+      type: "input",
+      message: "Additional contact info/ways to be reached:",
+      name: "additionalinfo"
+    },
   ];
-
+  const licenseAndBadges = (license) => {
+      if(license === "MIT") {
+          return `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`;
+      }
+      else if (license === "Apache 2.0") {
+          return `[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`; 
+      }
+      else if (license === "GPLv3") {
+        return `[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)`;
+      }
+      else if (license === "Unlicense") {
+      return `[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)`;
+      }
+      else if (license === "LGPLv3") {
+      return `[![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)`;
+}
+  }
 // // function to write README file
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, function(err) {
@@ -84,6 +92,8 @@ function init() {
     inquirer
         .prompt(questions)
         .then(function(response) {
+          badge = licenseAndBadges(response.license);
+
             // console.log(response);
             // console.log(response.title);
             // console.log(response.description);
