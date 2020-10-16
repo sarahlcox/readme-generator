@@ -24,7 +24,7 @@ var questions = [
         message: "Enter usage information:",
         name: "usage"
       },
-    //   make this a list // import a badge?
+    //   make this a list
       {
         type: "list",
         name: "license",
@@ -57,6 +57,7 @@ var questions = [
       name: "additionalinfo"
     },
   ];
+  // Add badges for licenses
   const licenseAndBadges = (license) => {
       if(license === "MIT") {
           return `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`;
@@ -81,9 +82,7 @@ function writeToFile(fileName, data) {
         if (err) {
           return console.log(err);
         }
-      
-        // console.log("Success!");
-      
+            
       });
 }
 
@@ -94,17 +93,6 @@ function init() {
         .then(function(response) {
           badge = licenseAndBadges(response.license);
 
-            // console.log(response);
-            // console.log(response.title);
-            // console.log(response.description);
-            // console.log(response.toc);
-            // console.log(response.installation);
-            // console.log(response.usage);
-            // console.log(response.license);
-            // console.log(response.contributing);
-            // console.log(response.tests);
-            // console.log(response.questions);
-            // console.log("thisisaninit");
             writeToFile("readme.md", markdown(response));
 
           });
