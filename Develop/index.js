@@ -14,6 +14,11 @@ var questions = [
       message: "What is your README title?",
       name: "title"
     },
+    {
+      type: "input",
+      message: "Description:",
+      name: "description"
+    },
       {
         type: "input",
         message: "Enter installation information:",
